@@ -1,7 +1,7 @@
 pipeline{
 
     environment{
-        IMAGE_NAME = "sadofrazer/alpinehelloworld"
+        IMAGE_NAME = "matao39/alpinehelloworld"
         IMAGE_TAG = "${BUILD_TAG}"
         CONTAINER_NAME = "alpinehelloworld"
         STAGING = "amandine-ajc-staging"
@@ -13,7 +13,7 @@ pipeline{
 
     stages{
 
-        stage ('Build Imahe'){
+        stage ('Build Image'){
             agent any
             steps{
                 script{
