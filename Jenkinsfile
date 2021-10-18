@@ -6,7 +6,7 @@ pipeline{
         CONTAINER_NAME = "alpinehelloworld"
         STAGING = "amandine-ajc-staging"
         PRODUCTION = "amandine-ajc-production"
-        USER_NAME = "matao39"
+        USERNAME = "matao39"
 
     }
 
@@ -14,7 +14,7 @@ pipeline{
 
     stages{
 
-        stage ('Build Image'){
+        stage ('Build Imahe'){
             agent any
             steps{
                 script{
@@ -57,8 +57,7 @@ pipeline{
                 }
             }
         }
-
-       stage('Push image to Dockerhub') {
+        stage('Push image to Dockerhub') {
             agent any
             steps {
                 script {
