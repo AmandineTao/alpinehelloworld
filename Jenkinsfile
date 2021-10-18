@@ -58,12 +58,12 @@ pipeline{
             }
         }
 
-        stage('Push on Docker hub') {
+       stage('Push image to Dockerhub') {
             agent any
             steps {
                 script {
                     sh '''
-                       docker -u ${USER_NAME} -p ${PASSWORD}
+                       docker login -u ${USERNAME} -p ${PASSWORD}
                        docker push ${IMAGE_NAME}:${IMAGE_TAG}
                     '''
                 }
