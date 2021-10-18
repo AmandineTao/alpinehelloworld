@@ -6,6 +6,7 @@ pipeline{
         CONTAINER_NAME = "alpinehelloworld"
         STAGING = "amandine-ajc-staging"
         PRODUCTION = "amandine-ajc-production"
+        USER_NAME = "matao39"
 
     }
 
@@ -52,6 +53,18 @@ pipeline{
                     sh '''
                        docker stop ${CONTAINER_NAME}
                        docker rm ${CONTAINER_NAME}
+                    '''
+                }
+            }
+        }
+
+        stage('Push on Docker hub') {
+            agent any
+            steps {
+                script {
+                    sh '''
+                       docker -u ${USER_NAME} -p ${PASSWORD}
+                       docker push ${IMAGE_NAME}:${IMAGE_TAG}
                     '''
                 }
             }
